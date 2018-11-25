@@ -1,0 +1,6 @@
+included:
+- AsyncAwait
+- AsyncAwaitTests
+
+opt_in_rules:
+- trailing_whitespace
