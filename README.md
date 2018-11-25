@@ -27,7 +27,7 @@ carthage update
 
 ## Usage
 
-```
+```swift
 // Hell:
 
 private func foo(completion: (Result<String>)) {
