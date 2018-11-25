@@ -28,9 +28,11 @@ carthage update
 ## Usage
 
 ```swift
+// Current callback approaches
+
 // Hell:
 
-private func foo(completion: (Result<String>)) {
+func foo(completion: (Result<String>)) {
     someLongFunction { result in
         switch result {
         case .success(let value):
@@ -49,9 +51,36 @@ private func foo(completion: (Result<String>)) {
     }
 }
 
+// Hell-ish:
+
+func foo(completion: (Result<String>)) {
+    someLongFunction { result in
+        switch result {
+        case .success(let value):
+            foo2(completion: completion)
+        case .failure(let error):
+            completion(.failure(error))
+        }
+    }
+}
+
+func foo2(completion: (Result<String>)) {
+    someLongFunction { result in
+        switch result {
+        case .success(let value):
+            //...
+            completion(.success("bar"))
+        case .failure(let error):
+            completion(.failure(error))
+        }
+    }
+}
+
+// AwaitAsync approach
+
 // Heaven:
 
-private func foo() -> Async<String> {
+func foo() -> Async<String> {
     return Async { completion in
         async({
             let value1 = try await(self.someLongFunction(...))
@@ -66,10 +95,10 @@ private func foo() -> Async<String> {
 
 // Nirvana:
 
-private func superFoo() -> Async<String> {
+func superFoo() -> Async<String> {
     return Async { completion in
         async({
-            let allThoseOperations = (0..<100).map { foo() }
+            let allThoseOperations = (0..<100).map { _ in foo() }
             let results = try awaitAll(allThoseOperations)
             //...
             completion(.success("bar-humbug no more!"))
