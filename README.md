@@ -2,7 +2,7 @@
 
 | master  | dev |
 | ------------- | ------------- |
-| [![Build Status](https://travis-ci.com/larromba/asyncawait.svg?branch=master)](https://travis-ci.com/larromba/asyncawait) | [![Build Status](https://travis-ci.com/larromba/asyncawait.svg?branch=dev)](https://travis-ci.com/larromba/asyncawait) |
+| [![Build Status](https://travis-ci.com/larromba/AsyncAwait.svg?branch=master)](https://travis-ci.com/larromba/AsyncAwait) | [![Build Status](https://travis-ci.com/larromba/AsyncAwait.svg?branch=dev)](https://travis-ci.com/larromba/AsyncAwait) |
 
 ## About
 This is a simple [async/await](https://javascript.info/async-await) implementation for swift. This concept might become [part of Swift](https://gist.github.com/lattner/429b9070918248274f25b714dcfc7619) at some point.
