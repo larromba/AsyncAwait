@@ -58,7 +58,7 @@ final class AwaitTests: XCTestCase {
         }, onError: { error in
             XCTFail(error.localizedDescription)
         })
-        wait(for: (delay * 3) + 0.5, completion: nil)
+        wait(for: delay + 0.5, completion: nil)
     }
 
     func testAwaitAllIgnoresError() {
@@ -74,7 +74,7 @@ final class AwaitTests: XCTestCase {
         }, onError: { error in
             XCTFail(error.localizedDescription)
         })
-        wait(for: (delay * 3) + 0.5, completion: nil)
+        wait(for: delay + 0.5, completion: nil)
     }
 
     func testAwaitAllCanBailEarly() {
@@ -89,7 +89,7 @@ final class AwaitTests: XCTestCase {
         }, onError: { _ in
             expectation.fulfill()
         })
-        wait(for: (delay * 3) + 0.5, completion: nil)
+        wait(for: delay + 0.5, completion: nil)
     }
 
     func testAwaitAllProgress() {
