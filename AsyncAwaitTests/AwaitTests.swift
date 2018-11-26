@@ -58,7 +58,7 @@ final class AwaitTests: XCTestCase {
         }, onError: { error in
             XCTFail(error.localizedDescription)
         })
-        wait(for: (delay * 3) + 0.5, completion: nil)
+        wait(for: delay + 0.5, completion: nil)
     }
 
     func testAwaitAllIgnoresError() {
@@ -74,7 +74,7 @@ final class AwaitTests: XCTestCase {
         }, onError: { error in
             XCTFail(error.localizedDescription)
         })
-        wait(for: (delay * 3) + 0.5, completion: nil)
+        wait(for: delay + 0.5, completion: nil)
     }
 
     func testAwaitAllCanBailEarly() {
@@ -89,7 +89,26 @@ final class AwaitTests: XCTestCase {
         }, onError: { _ in
             expectation.fulfill()
         })
-        wait(for: (delay * 3) + 0.5, completion: nil)
+        wait(for: delay + 0.5, completion: nil)
+    }
+
+    func testAwaitAllProgress() {
+        let delay = 0.1
+        let expectation = self.expectation(description: "await throws error")
+        var progress = [Double]()
+        async({
+            _ = try awaitAll([self.asyncFunction(delay: delay + 0.1),
+                              self.asyncFunction(delay: delay + 0.2),
+                              self.asyncFunction(delay: delay + 0.3),
+                              self.asyncFunction(delay: delay + 0.4),
+                              self.asyncFunction(delay: delay + 0.5)],
+                             progress: { progress += [$0] })
+            XCTAssertEqual(progress, [1.0 / 5.0, 2.0 / 5.0, 3.0 / 5.0, 4.0 / 5.0, 5.0 / 5.0])
+            expectation.fulfill()
+        }, onError: { error in
+            XCTFail(error.localizedDescription)
+        })
+        wait(for: (delay + 0.5) + 0.5, completion: nil)
     }
 
     func testAwaitAllProgress() {
