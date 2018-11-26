@@ -13,11 +13,10 @@ public func await<T>(_ operation: Async<T>) throws -> T {
         switch result {
         case .success(let resultValue):
             value = resultValue
-            group.leave()
         case .failure(let resultError):
             error = resultError
-            group.leave()
         }
+        group.leave()
     }
     group.wait()
 
@@ -40,7 +39,8 @@ public func awaitAll<T>(_ operations: [Async<T>], bailEarly: Bool = false,
             switch result {
             case .success(let resultValue):
                 values += [resultValue]
-                group.leave()
+                // TODO: if many operations complete at the same time, maybe this won't work as expected?
+                progress?(Double(values.count + errors.count) / Double(operations.count))
             case .failure(let resultError):
                 errors += [resultError]
                 guard !bailEarly else {
@@ -48,9 +48,8 @@ public func awaitAll<T>(_ operations: [Async<T>], bailEarly: Bool = false,
                     (values.count..<operations.count).forEach { _ in group.leave() }
                     return
                 }
-                group.leave()
             }
-            progress?(Double(values.count + errors.count) / Double(operations.count))
+            group.leave()
         }
     }
     group.wait()
