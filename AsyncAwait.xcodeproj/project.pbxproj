@@ -20,6 +20,34 @@
 		7F02A4EE21AB1946007A6ECD /* UtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4ED21AB1946007A6ECD /* UtilityTests.swift */; };
 		7F02A4F021AB19E2007A6ECD /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F02A4DF21AB10A1007A6ECD /* Result.framework */; };
 		7F02A4F121AB19F5007A6ECD /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F02A4DF21AB10A1007A6ECD /* Result.framework */; };
+		7F88A64121AEFD990086D6BE /* AsyncAwait.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8FA77F21AEF73000A93E97 /* AsyncAwait.framework */; };
+		7F88A64421AEFDB60086D6BE /* AsyncAwait.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8FA78C21AEF75C00A93E97 /* AsyncAwait.framework */; };
+		7F88A64521AEFDC00086D6BE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8FA79621AEF84A00A93E97 /* Result.framework */; };
+		7F88A64721AEFDC60086D6BE /* TestExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F88A64621AEFDC60086D6BE /* TestExtensions.framework */; };
+		7F88A64A21AEFE7B0086D6BE /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7F8FA79621AEF84A00A93E97 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F88A64C21AF06500086D6BE /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7F8FA76E21AEDFE800A93E97 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F88A64E21AF06810086D6BE /* TestExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7F8FA77521AEE11900A93E97 /* TestExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F88A65021AF06C00086D6BE /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7F8FA76E21AEDFE800A93E97 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F88A65221AF07150086D6BE /* TestExtensions.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7F88A64621AEFDC60086D6BE /* TestExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F88A65321AF07180086D6BE /* Result.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7F8FA79621AEF84A00A93E97 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7F8FA74721AEDD3D00A93E97 /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4CD21AB0F82007A6ECD /* AsyncTests.swift */; };
+		7F8FA74821AEDD3D00A93E97 /* AwaitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4EB21AB1537007A6ECD /* AwaitTests.swift */; };
+		7F8FA74921AEDD3D00A93E97 /* UtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4ED21AB1946007A6ECD /* UtilityTests.swift */; };
+		7F8FA74A21AEDD3E00A93E97 /* AsyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4CD21AB0F82007A6ECD /* AsyncTests.swift */; };
+		7F8FA74B21AEDD3E00A93E97 /* AwaitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4EB21AB1537007A6ECD /* AwaitTests.swift */; };
+		7F8FA74C21AEDD3E00A93E97 /* UtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4ED21AB1946007A6ECD /* UtilityTests.swift */; };
+		7F8FA77421AEE11700A93E97 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8FA76E21AEDFE800A93E97 /* Result.framework */; };
+		7F8FA77621AEE11900A93E97 /* TestExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8FA77521AEE11900A93E97 /* TestExtensions.framework */; };
+		7F8FA78321AEF73000A93E97 /* AsyncAwait_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8FA78121AEF73000A93E97 /* AsyncAwait_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F8FA79021AEF75C00A93E97 /* AsyncAwait_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F8FA78E21AEF75C00A93E97 /* AsyncAwait_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F8FA79421AEF7BE00A93E97 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8FA76E21AEDFE800A93E97 /* Result.framework */; };
+		7F8FA79721AEF84A00A93E97 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F8FA79621AEF84A00A93E97 /* Result.framework */; };
+		7F8FA79921AEF90700A93E97 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4D921AB0F99007A6ECD /* Async.swift */; };
+		7F8FA79A21AEF90700A93E97 /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4DB21AB0FA3007A6ECD /* Await.swift */; };
+		7F8FA79B21AEF90700A93E97 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4E921AB1467007A6ECD /* Utility.swift */; };
+		7F8FA79C21AEF90800A93E97 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4D921AB0F99007A6ECD /* Async.swift */; };
+		7F8FA79D21AEF90800A93E97 /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4DB21AB0FA3007A6ECD /* Await.swift */; };
+		7F8FA79E21AEF90800A93E97 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4E921AB1467007A6ECD /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +57,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 7F02A4BE21AB0F81007A6ECD;
 			remoteInfo = AsyncAwait;
+		};
+		7F88A63F21AEFD860086D6BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F02A4B621AB0F81007A6ECD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F8FA77E21AEF73000A93E97;
+			remoteInfo = "AsyncAwait-iOS";
+		};
+		7F88A64221AEFDAE0086D6BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F02A4B621AB0F81007A6ECD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F8FA78B21AEF75C00A93E97;
+			remoteInfo = "AsyncAwait-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -53,13 +95,55 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7F88A64921AEFE470086D6BE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7F88A64A21AEFE7B0086D6BE /* Result.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F88A64B21AF06370086D6BE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7F88A64C21AF06500086D6BE /* Result.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F88A64D21AF06690086D6BE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7F88A64E21AF06810086D6BE /* TestExtensions.framework in CopyFiles */,
+				7F88A65021AF06C00086D6BE /* Result.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F88A65121AF07020086D6BE /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7F88A65221AF07150086D6BE /* TestExtensions.framework in CopyFiles */,
+				7F88A65321AF07180086D6BE /* Result.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7F02A4BF21AB0F81007A6ECD /* AsyncAwait.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsyncAwait.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F02A4C221AB0F81007A6ECD /* AsyncAwait.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncAwait.h; sourceTree = "<group>"; };
 		7F02A4C321AB0F81007A6ECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F02A4C821AB0F82007A6ECD /* AsyncAwaitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsyncAwaitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F02A4C821AB0F82007A6ECD /* AsyncAwaitTests-macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AsyncAwaitTests-macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F02A4CD21AB0F82007A6ECD /* AsyncTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncTests.swift; sourceTree = "<group>"; };
 		7F02A4CF21AB0F82007A6ECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F02A4D921AB0F99007A6ECD /* Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
@@ -70,6 +154,20 @@
 		7F02A4E921AB1467007A6ECD /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		7F02A4EB21AB1537007A6ECD /* AwaitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwaitTests.swift; sourceTree = "<group>"; };
 		7F02A4ED21AB1946007A6ECD /* UtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityTests.swift; sourceTree = "<group>"; };
+		7F88A64621AEFDC60086D6BE /* TestExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TestExtensions.framework; path = Carthage/Build/tvOS/TestExtensions.framework; sourceTree = "<group>"; };
+		7F8FA73321AEDD2000A93E97 /* AsyncAwaitTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AsyncAwaitTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F8FA73721AEDD2000A93E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F8FA73F21AEDD2A00A93E97 /* AsyncAwaitTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AsyncAwaitTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F8FA74321AEDD2A00A93E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F8FA76E21AEDFE800A93E97 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		7F8FA77521AEE11900A93E97 /* TestExtensions.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TestExtensions.framework; path = Carthage/Build/iOS/TestExtensions.framework; sourceTree = "<group>"; };
+		7F8FA77F21AEF73000A93E97 /* AsyncAwait.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsyncAwait.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F8FA78121AEF73000A93E97 /* AsyncAwait_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncAwait_iOS.h; sourceTree = "<group>"; };
+		7F8FA78221AEF73000A93E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F8FA78C21AEF75C00A93E97 /* AsyncAwait.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AsyncAwait.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F8FA78E21AEF75C00A93E97 /* AsyncAwait_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncAwait_tvOS.h; sourceTree = "<group>"; };
+		7F8FA78F21AEF75C00A93E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F8FA79621AEF84A00A93E97 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +189,42 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7F8FA73021AEDD2000A93E97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F88A64121AEFD990086D6BE /* AsyncAwait.framework in Frameworks */,
+				7F8FA77421AEE11700A93E97 /* Result.framework in Frameworks */,
+				7F8FA77621AEE11900A93E97 /* TestExtensions.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA73C21AEDD2A00A93E97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F88A64421AEFDB60086D6BE /* AsyncAwait.framework in Frameworks */,
+				7F88A64521AEFDC00086D6BE /* Result.framework in Frameworks */,
+				7F88A64721AEFDC60086D6BE /* TestExtensions.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA77C21AEF73000A93E97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F8FA79421AEF7BE00A93E97 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA78921AEF75C00A93E97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F8FA79721AEF84A00A93E97 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -98,8 +232,14 @@
 			isa = PBXGroup;
 			children = (
 				7F02A4DD21AB0FF2007A6ECD /* README.md */,
-				7F02A4C121AB0F81007A6ECD /* AsyncAwait */,
-				7F02A4CC21AB0F82007A6ECD /* AsyncAwaitTests */,
+				7F8FA77921AEF6FE00A93E97 /* AsyncAwait */,
+				7F02A4C121AB0F81007A6ECD /* AsyncAwait-macOS */,
+				7F8FA78021AEF73000A93E97 /* AsyncAwait-iOS */,
+				7F8FA78D21AEF75C00A93E97 /* AsyncAwait-tvOS */,
+				7F8FA72E21AEDCE700A93E97 /* AsyncAwaitTests */,
+				7F02A4CC21AB0F82007A6ECD /* AsyncAwaitTests-macOS */,
+				7F8FA73421AEDD2000A93E97 /* AsyncAwaitTests-iOS */,
+				7F8FA74021AEDD2A00A93E97 /* AsyncAwaitTests-tvOS */,
 				7F02A4C021AB0F81007A6ECD /* Products */,
 				7F02A4E121AB10DC007A6ECD /* Frameworks */,
 			);
@@ -109,41 +249,97 @@
 			isa = PBXGroup;
 			children = (
 				7F02A4BF21AB0F81007A6ECD /* AsyncAwait.framework */,
-				7F02A4C821AB0F82007A6ECD /* AsyncAwaitTests.xctest */,
+				7F02A4C821AB0F82007A6ECD /* AsyncAwaitTests-macOS.xctest */,
+				7F8FA73321AEDD2000A93E97 /* AsyncAwaitTests-iOS.xctest */,
+				7F8FA73F21AEDD2A00A93E97 /* AsyncAwaitTests-tvOS.xctest */,
+				7F8FA77F21AEF73000A93E97 /* AsyncAwait.framework */,
+				7F8FA78C21AEF75C00A93E97 /* AsyncAwait.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7F02A4C121AB0F81007A6ECD /* AsyncAwait */ = {
+		7F02A4C121AB0F81007A6ECD /* AsyncAwait-macOS */ = {
 			isa = PBXGroup;
 			children = (
 				7F02A4C221AB0F81007A6ECD /* AsyncAwait.h */,
-				7F02A4D921AB0F99007A6ECD /* Async.swift */,
-				7F02A4DB21AB0FA3007A6ECD /* Await.swift */,
-				7F02A4E921AB1467007A6ECD /* Utility.swift */,
 				7F02A4C321AB0F81007A6ECD /* Info.plist */,
 			);
-			path = AsyncAwait;
+			path = "AsyncAwait-macOS";
 			sourceTree = "<group>";
 		};
-		7F02A4CC21AB0F82007A6ECD /* AsyncAwaitTests */ = {
+		7F02A4CC21AB0F82007A6ECD /* AsyncAwaitTests-macOS */ = {
 			isa = PBXGroup;
 			children = (
-				7F02A4CD21AB0F82007A6ECD /* AsyncTests.swift */,
-				7F02A4EB21AB1537007A6ECD /* AwaitTests.swift */,
-				7F02A4ED21AB1946007A6ECD /* UtilityTests.swift */,
 				7F02A4CF21AB0F82007A6ECD /* Info.plist */,
 			);
-			path = AsyncAwaitTests;
+			path = "AsyncAwaitTests-macOS";
 			sourceTree = "<group>";
 		};
 		7F02A4E121AB10DC007A6ECD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7F88A64621AEFDC60086D6BE /* TestExtensions.framework */,
+				7F8FA79621AEF84A00A93E97 /* Result.framework */,
+				7F8FA77521AEE11900A93E97 /* TestExtensions.framework */,
 				7F02A4DF21AB10A1007A6ECD /* Result.framework */,
+				7F8FA76E21AEDFE800A93E97 /* Result.framework */,
 				7F02A4E521AB1311007A6ECD /* TestExtensions.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7F8FA72E21AEDCE700A93E97 /* AsyncAwaitTests */ = {
+			isa = PBXGroup;
+			children = (
+				7F02A4CD21AB0F82007A6ECD /* AsyncTests.swift */,
+				7F02A4EB21AB1537007A6ECD /* AwaitTests.swift */,
+				7F02A4ED21AB1946007A6ECD /* UtilityTests.swift */,
+			);
+			path = AsyncAwaitTests;
+			sourceTree = "<group>";
+		};
+		7F8FA73421AEDD2000A93E97 /* AsyncAwaitTests-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7F8FA73721AEDD2000A93E97 /* Info.plist */,
+			);
+			path = "AsyncAwaitTests-iOS";
+			sourceTree = "<group>";
+		};
+		7F8FA74021AEDD2A00A93E97 /* AsyncAwaitTests-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				7F8FA74321AEDD2A00A93E97 /* Info.plist */,
+			);
+			path = "AsyncAwaitTests-tvOS";
+			sourceTree = "<group>";
+		};
+		7F8FA77921AEF6FE00A93E97 /* AsyncAwait */ = {
+			isa = PBXGroup;
+			children = (
+				7F02A4D921AB0F99007A6ECD /* Async.swift */,
+				7F02A4DB21AB0FA3007A6ECD /* Await.swift */,
+				7F02A4E921AB1467007A6ECD /* Utility.swift */,
+			);
+			path = AsyncAwait;
+			sourceTree = "<group>";
+		};
+		7F8FA78021AEF73000A93E97 /* AsyncAwait-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7F8FA78121AEF73000A93E97 /* AsyncAwait_iOS.h */,
+				7F8FA78221AEF73000A93E97 /* Info.plist */,
+			);
+			path = "AsyncAwait-iOS";
+			sourceTree = "<group>";
+		};
+		7F8FA78D21AEF75C00A93E97 /* AsyncAwait-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				7F8FA78E21AEF75C00A93E97 /* AsyncAwait_tvOS.h */,
+				7F8FA78F21AEF75C00A93E97 /* Info.plist */,
+			);
+			path = "AsyncAwait-tvOS";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,12 +353,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7F8FA77A21AEF73000A93E97 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F8FA78321AEF73000A93E97 /* AsyncAwait_iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA78721AEF75C00A93E97 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F8FA79021AEF75C00A93E97 /* AsyncAwait_tvOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7F02A4BE21AB0F81007A6ECD /* AsyncAwait */ = {
+		7F02A4BE21AB0F81007A6ECD /* AsyncAwait-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7F02A4D321AB0F82007A6ECD /* Build configuration list for PBXNativeTarget "AsyncAwait" */;
+			buildConfigurationList = 7F02A4D321AB0F82007A6ECD /* Build configuration list for PBXNativeTarget "AsyncAwait-macOS" */;
 			buildPhases = (
 				7F02A4E821AB1360007A6ECD /* ShellScript */,
 				7F02A4BA21AB0F81007A6ECD /* Headers */,
@@ -175,14 +387,14 @@
 			);
 			dependencies = (
 			);
-			name = AsyncAwait;
+			name = "AsyncAwait-macOS";
 			productName = AsyncAwait;
 			productReference = 7F02A4BF21AB0F81007A6ECD /* AsyncAwait.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		7F02A4C721AB0F82007A6ECD /* AsyncAwaitTests */ = {
+		7F02A4C721AB0F82007A6ECD /* AsyncAwaitTests-macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7F02A4D621AB0F82007A6ECD /* Build configuration list for PBXNativeTarget "AsyncAwaitTests" */;
+			buildConfigurationList = 7F02A4D621AB0F82007A6ECD /* Build configuration list for PBXNativeTarget "AsyncAwaitTests-macOS" */;
 			buildPhases = (
 				7F02A4C421AB0F82007A6ECD /* Sources */,
 				7F02A4C521AB0F82007A6ECD /* Frameworks */,
@@ -194,10 +406,86 @@
 			dependencies = (
 				7F02A4CB21AB0F82007A6ECD /* PBXTargetDependency */,
 			);
-			name = AsyncAwaitTests;
+			name = "AsyncAwaitTests-macOS";
 			productName = AsyncAwaitTests;
-			productReference = 7F02A4C821AB0F82007A6ECD /* AsyncAwaitTests.xctest */;
+			productReference = 7F02A4C821AB0F82007A6ECD /* AsyncAwaitTests-macOS.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7F8FA73221AEDD2000A93E97 /* AsyncAwaitTests-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F8FA73821AEDD2000A93E97 /* Build configuration list for PBXNativeTarget "AsyncAwaitTests-iOS" */;
+			buildPhases = (
+				7F8FA72F21AEDD2000A93E97 /* Sources */,
+				7F8FA73021AEDD2000A93E97 /* Frameworks */,
+				7F8FA73121AEDD2000A93E97 /* Resources */,
+				7F88A64D21AF06690086D6BE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7F88A64021AEFD860086D6BE /* PBXTargetDependency */,
+			);
+			name = "AsyncAwaitTests-iOS";
+			productName = "AsyncAwaitTests-iOS";
+			productReference = 7F8FA73321AEDD2000A93E97 /* AsyncAwaitTests-iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7F8FA73E21AEDD2A00A93E97 /* AsyncAwaitTests-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F8FA74421AEDD2A00A93E97 /* Build configuration list for PBXNativeTarget "AsyncAwaitTests-tvOS" */;
+			buildPhases = (
+				7F8FA73B21AEDD2A00A93E97 /* Sources */,
+				7F8FA73C21AEDD2A00A93E97 /* Frameworks */,
+				7F8FA73D21AEDD2A00A93E97 /* Resources */,
+				7F88A65121AF07020086D6BE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7F88A64321AEFDAE0086D6BE /* PBXTargetDependency */,
+			);
+			name = "AsyncAwaitTests-tvOS";
+			productName = "AsyncAwaitTests-tvOS";
+			productReference = 7F8FA73F21AEDD2A00A93E97 /* AsyncAwaitTests-tvOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7F8FA77E21AEF73000A93E97 /* AsyncAwait-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F8FA78421AEF73000A93E97 /* Build configuration list for PBXNativeTarget "AsyncAwait-iOS" */;
+			buildPhases = (
+				7F8FA77A21AEF73000A93E97 /* Headers */,
+				7F8FA77B21AEF73000A93E97 /* Sources */,
+				7F8FA77C21AEF73000A93E97 /* Frameworks */,
+				7F8FA77D21AEF73000A93E97 /* Resources */,
+				7F88A64B21AF06370086D6BE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AsyncAwait-iOS";
+			productName = "AsyncAwait-iOS";
+			productReference = 7F8FA77F21AEF73000A93E97 /* AsyncAwait.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7F8FA78B21AEF75C00A93E97 /* AsyncAwait-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F8FA79121AEF75C00A93E97 /* Build configuration list for PBXNativeTarget "AsyncAwait-tvOS" */;
+			buildPhases = (
+				7F8FA78721AEF75C00A93E97 /* Headers */,
+				7F8FA78821AEF75C00A93E97 /* Sources */,
+				7F8FA78921AEF75C00A93E97 /* Frameworks */,
+				7F8FA78A21AEF75C00A93E97 /* Resources */,
+				7F88A64921AEFE470086D6BE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AsyncAwait-tvOS";
+			productName = "AsyncAwait-tvOS";
+			productReference = 7F8FA78C21AEF75C00A93E97 /* AsyncAwait.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -215,6 +503,18 @@
 					7F02A4C721AB0F82007A6ECD = {
 						CreatedOnToolsVersion = 10.1;
 					};
+					7F8FA73221AEDD2000A93E97 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					7F8FA73E21AEDD2A00A93E97 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					7F8FA77E21AEF73000A93E97 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					7F8FA78B21AEF75C00A93E97 = {
+						CreatedOnToolsVersion = 10.1;
+					};
 				};
 			};
 			buildConfigurationList = 7F02A4B921AB0F81007A6ECD /* Build configuration list for PBXProject "AsyncAwait" */;
@@ -229,8 +529,12 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7F02A4BE21AB0F81007A6ECD /* AsyncAwait */,
-				7F02A4C721AB0F82007A6ECD /* AsyncAwaitTests */,
+				7F02A4BE21AB0F81007A6ECD /* AsyncAwait-macOS */,
+				7F8FA77E21AEF73000A93E97 /* AsyncAwait-iOS */,
+				7F8FA78B21AEF75C00A93E97 /* AsyncAwait-tvOS */,
+				7F02A4C721AB0F82007A6ECD /* AsyncAwaitTests-macOS */,
+				7F8FA73221AEDD2000A93E97 /* AsyncAwaitTests-iOS */,
+				7F8FA73E21AEDD2A00A93E97 /* AsyncAwaitTests-tvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -244,6 +548,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7F02A4C621AB0F82007A6ECD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA73121AEDD2000A93E97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA73D21AEDD2A00A93E97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA77D21AEF73000A93E97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA78A21AEF75C00A93E97 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -293,13 +625,63 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		7F8FA72F21AEDD2000A93E97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F8FA74921AEDD3D00A93E97 /* UtilityTests.swift in Sources */,
+				7F8FA74721AEDD3D00A93E97 /* AsyncTests.swift in Sources */,
+				7F8FA74821AEDD3D00A93E97 /* AwaitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA73B21AEDD2A00A93E97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F8FA74C21AEDD3E00A93E97 /* UtilityTests.swift in Sources */,
+				7F8FA74A21AEDD3E00A93E97 /* AsyncTests.swift in Sources */,
+				7F8FA74B21AEDD3E00A93E97 /* AwaitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA77B21AEF73000A93E97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F8FA79A21AEF90700A93E97 /* Await.swift in Sources */,
+				7F8FA79921AEF90700A93E97 /* Async.swift in Sources */,
+				7F8FA79B21AEF90700A93E97 /* Utility.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F8FA78821AEF75C00A93E97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F8FA79D21AEF90800A93E97 /* Await.swift in Sources */,
+				7F8FA79C21AEF90800A93E97 /* Async.swift in Sources */,
+				7F8FA79E21AEF90800A93E97 /* Utility.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		7F02A4CB21AB0F82007A6ECD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7F02A4BE21AB0F81007A6ECD /* AsyncAwait */;
+			target = 7F02A4BE21AB0F81007A6ECD /* AsyncAwait-macOS */;
 			targetProxy = 7F02A4CA21AB0F82007A6ECD /* PBXContainerItemProxy */;
+		};
+		7F88A64021AEFD860086D6BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7F8FA77E21AEF73000A93E97 /* AsyncAwait-iOS */;
+			targetProxy = 7F88A63F21AEFD860086D6BE /* PBXContainerItemProxy */;
+		};
+		7F88A64321AEFDAE0086D6BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7F8FA78B21AEF75C00A93E97 /* AsyncAwait-tvOS */;
+			targetProxy = 7F88A64221AEFDAE0086D6BE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -442,15 +824,16 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = AsyncAwait/Info.plist;
+				INFOPLIST_FILE = "AsyncAwait-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.larromba.AsyncAwait;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwait-macOS";
+				PRODUCT_NAME = AsyncAwait;
+				SDKROOT = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -474,15 +857,16 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = AsyncAwait/Info.plist;
+				INFOPLIST_FILE = "AsyncAwait-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.larromba.AsyncAwait;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwait-macOS";
+				PRODUCT_NAME = AsyncAwait;
+				SDKROOT = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 			};
@@ -499,13 +883,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = AsyncAwaitTests/Info.plist;
+				INFOPLIST_FILE = "AsyncAwaitTests-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.larromba.AsyncAwaitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwaitTests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 			};
@@ -522,15 +906,241 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = AsyncAwaitTests/Info.plist;
+				INFOPLIST_FILE = "AsyncAwaitTests-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.larromba.AsyncAwaitTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwaitTests-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		7F8FA73921AEDD2000A93E97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PFC77GK3D7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "AsyncAwaitTests-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwaitTests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7F8FA73A21AEDD2000A93E97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PFC77GK3D7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "AsyncAwaitTests-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwaitTests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7F8FA74521AEDD2A00A93E97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PFC77GK3D7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = "AsyncAwaitTests-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwaitTests-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.1;
+			};
+			name = Debug;
+		};
+		7F8FA74621AEDD2A00A93E97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PFC77GK3D7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = "AsyncAwaitTests-tvOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwaitTests-tvOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7F8FA78521AEF73000A93E97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PFC77GK3D7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "AsyncAwait-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwait-iOS";
+				PRODUCT_NAME = AsyncAwait;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7F8FA78621AEF73000A93E97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PFC77GK3D7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "AsyncAwait-iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwait-iOS";
+				PRODUCT_NAME = AsyncAwait;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7F8FA79221AEF75C00A93E97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PFC77GK3D7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = "AsyncAwait-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwait-tvOS";
+				PRODUCT_NAME = AsyncAwait;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+			};
+			name = Debug;
+		};
+		7F8FA79321AEF75C00A93E97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = PFC77GK3D7;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = "AsyncAwait-tvOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.larromba.AsyncAwait-tvOS";
+				PRODUCT_NAME = AsyncAwait;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 11.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -546,7 +1156,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7F02A4D321AB0F82007A6ECD /* Build configuration list for PBXNativeTarget "AsyncAwait" */ = {
+		7F02A4D321AB0F82007A6ECD /* Build configuration list for PBXNativeTarget "AsyncAwait-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F02A4D421AB0F82007A6ECD /* Debug */,
@@ -555,11 +1165,47 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7F02A4D621AB0F82007A6ECD /* Build configuration list for PBXNativeTarget "AsyncAwaitTests" */ = {
+		7F02A4D621AB0F82007A6ECD /* Build configuration list for PBXNativeTarget "AsyncAwaitTests-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F02A4D721AB0F82007A6ECD /* Debug */,
 				7F02A4D821AB0F82007A6ECD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F8FA73821AEDD2000A93E97 /* Build configuration list for PBXNativeTarget "AsyncAwaitTests-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F8FA73921AEDD2000A93E97 /* Debug */,
+				7F8FA73A21AEDD2000A93E97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F8FA74421AEDD2A00A93E97 /* Build configuration list for PBXNativeTarget "AsyncAwaitTests-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F8FA74521AEDD2A00A93E97 /* Debug */,
+				7F8FA74621AEDD2A00A93E97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F8FA78421AEF73000A93E97 /* Build configuration list for PBXNativeTarget "AsyncAwait-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F8FA78521AEF73000A93E97 /* Debug */,
+				7F8FA78621AEF73000A93E97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7F8FA79121AEF75C00A93E97 /* Build configuration list for PBXNativeTarget "AsyncAwait-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F8FA79221AEF75C00A93E97 /* Debug */,
+				7F8FA79321AEF75C00A93E97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

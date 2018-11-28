@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F02A4BE21AB0F81007A6ECD"
+               BlueprintIdentifier = "7F8FA77E21AEF73000A93E97"
                BuildableName = "AsyncAwait.framework"
-               BlueprintName = "AsyncAwait"
+               BlueprintName = "AsyncAwait-iOS"
                ReferencedContainer = "container:AsyncAwait.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7F02A4C721AB0F82007A6ECD"
-               BuildableName = "AsyncAwaitTests.xctest"
-               BlueprintName = "AsyncAwaitTests"
-               ReferencedContainer = "container:AsyncAwait.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7F02A4BE21AB0F81007A6ECD"
-            BuildableName = "AsyncAwait.framework"
-            BlueprintName = "AsyncAwait"
-            ReferencedContainer = "container:AsyncAwait.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -64,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7F02A4BE21AB0F81007A6ECD"
+            BlueprintIdentifier = "7F8FA77E21AEF73000A93E97"
             BuildableName = "AsyncAwait.framework"
-            BlueprintName = "AsyncAwait"
+            BlueprintName = "AsyncAwait-iOS"
             ReferencedContainer = "container:AsyncAwait.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7F02A4BE21AB0F81007A6ECD"
+            BlueprintIdentifier = "7F8FA77E21AEF73000A93E97"
             BuildableName = "AsyncAwait.framework"
-            BlueprintName = "AsyncAwait"
+            BlueprintName = "AsyncAwait-iOS"
             ReferencedContainer = "container:AsyncAwait.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
