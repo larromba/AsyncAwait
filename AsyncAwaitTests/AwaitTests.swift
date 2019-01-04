@@ -50,8 +50,8 @@ final class AwaitTests: XCTestCase {
         let expectation = self.expectation(description: "await waits and completes")
         async({
             let results = try awaitAll([self.asyncFunction(delay: delay),
-                                        self.asyncFunction(delay: delay),
-                                        self.asyncFunction(delay: delay)])
+                                        self.asyncFunction(delay: delay + 0.1),
+                                        self.asyncFunction(delay: delay + 0.2)])
             XCTAssertEqual(results.0.count, 3)
             XCTAssertEqual(results.1.count, 0)
             expectation.fulfill()
@@ -66,8 +66,8 @@ final class AwaitTests: XCTestCase {
         let expectation = self.expectation(description: "await waits and completes")
         async({
             let results = try awaitAll([self.asyncFunction(delay: delay),
-                                        self.asyncFunction(delay: delay, isError: true),
-                                        self.asyncFunction(delay: delay)])
+                                        self.asyncFunction(delay: delay + 0.1, isError: true),
+                                        self.asyncFunction(delay: delay + 0.2)])
             XCTAssertEqual(results.0.count, 2)
             XCTAssertEqual(results.1.count, 1)
             expectation.fulfill()
@@ -82,8 +82,8 @@ final class AwaitTests: XCTestCase {
         let expectation = self.expectation(description: "await throws error")
         async({
             _ = try awaitAll([self.asyncFunction(delay: delay),
-                              self.asyncFunction(delay: delay, isError: true),
-                              self.asyncFunction(delay: delay)],
+                              self.asyncFunction(delay: delay + 0.1, isError: true),
+                              self.asyncFunction(delay: delay + 0.2)],
                              bailEarly: true)
             XCTFail("shouldn't be reached")
         }, onError: { _ in
@@ -97,11 +97,11 @@ final class AwaitTests: XCTestCase {
         let expectation = self.expectation(description: "await throws error")
         var progress = [Double]()
         async({
-            _ = try awaitAll([self.asyncFunction(delay: delay + 0.1),
+            _ = try awaitAll([self.asyncFunction(delay: delay),
+                              self.asyncFunction(delay: delay + 0.1),
                               self.asyncFunction(delay: delay + 0.2),
                               self.asyncFunction(delay: delay + 0.3),
-                              self.asyncFunction(delay: delay + 0.4),
-                              self.asyncFunction(delay: delay + 0.5)],
+                              self.asyncFunction(delay: delay + 0.4)],
                              progress: { progress += [$0] })
             XCTAssertEqual(progress, [1.0 / 5.0, 2.0 / 5.0, 3.0 / 5.0, 4.0 / 5.0, 5.0 / 5.0])
             expectation.fulfill()

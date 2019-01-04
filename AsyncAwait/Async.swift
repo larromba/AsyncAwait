@@ -22,3 +22,17 @@ public struct Async<T> {
         self.completion = completion
     }
 }
+
+extension Async {
+    static func success(_ item: T) -> Async<T> {
+        return Async { completion in
+            completion(.success(item))
+        }
+    }
+
+    static func failure(_ error: Error) -> Async<T> {
+        return Async<T> { completion in
+            completion(.failure(error))
+        }
+    }
+}
