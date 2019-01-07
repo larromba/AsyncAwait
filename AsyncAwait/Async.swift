@@ -23,7 +23,7 @@ public struct Async<T> {
     }
 }
 
-extension Async {
+public extension Async {
     static func success(_ item: T) -> Async<T> {
         return Async { completion in
             completion(.success(item))
