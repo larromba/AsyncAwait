@@ -4,7 +4,7 @@ import Foundation
 import Result
 
 public func async(_ callback: @escaping () throws -> Void, onError: @escaping (Error) -> Void) {
-    DispatchQueue(label: "async.queue", attributes: .concurrent).async {
+    DispatchQueue.asyncAwait.async {
         do {
             try callback()
         } catch {

@@ -48,6 +48,12 @@
 		7F8FA79C21AEF90800A93E97 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4D921AB0F99007A6ECD /* Async.swift */; };
 		7F8FA79D21AEF90800A93E97 /* Await.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4DB21AB0FA3007A6ECD /* Await.swift */; };
 		7F8FA79E21AEF90800A93E97 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F02A4E921AB1467007A6ECD /* Utility.swift */; };
+		7F9C629721E5617200173A29 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C629621E5617200173A29 /* Queue.swift */; };
+		7F9C629821E5626800173A29 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C629621E5617200173A29 /* Queue.swift */; };
+		7F9C629921E5626900173A29 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C629621E5617200173A29 /* Queue.swift */; };
+		7F9C629C21E5671400173A29 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C629A21E5670C00173A29 /* QueueTests.swift */; };
+		7F9C629D21E5671400173A29 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C629A21E5670C00173A29 /* QueueTests.swift */; };
+		7F9C629E21E5671500173A29 /* QueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9C629A21E5670C00173A29 /* QueueTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +174,8 @@
 		7F8FA78E21AEF75C00A93E97 /* AsyncAwait_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AsyncAwait_tvOS.h; sourceTree = "<group>"; };
 		7F8FA78F21AEF75C00A93E97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F8FA79621AEF84A00A93E97 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/tvOS/Result.framework; sourceTree = "<group>"; };
+		7F9C629621E5617200173A29 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		7F9C629A21E5670C00173A29 /* QueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +302,7 @@
 				7F02A4CD21AB0F82007A6ECD /* AsyncTests.swift */,
 				7F02A4EB21AB1537007A6ECD /* AwaitTests.swift */,
 				7F02A4ED21AB1946007A6ECD /* UtilityTests.swift */,
+				7F9C629A21E5670C00173A29 /* QueueTests.swift */,
 			);
 			path = AsyncAwaitTests;
 			sourceTree = "<group>";
@@ -320,6 +329,7 @@
 				7F02A4D921AB0F99007A6ECD /* Async.swift */,
 				7F02A4DB21AB0FA3007A6ECD /* Await.swift */,
 				7F02A4E921AB1467007A6ECD /* Utility.swift */,
+				7F9C629621E5617200173A29 /* Queue.swift */,
 			);
 			path = AsyncAwait;
 			sourceTree = "<group>";
@@ -612,6 +622,7 @@
 				7F02A4DC21AB0FA3007A6ECD /* Await.swift in Sources */,
 				7F02A4DA21AB0F99007A6ECD /* Async.swift in Sources */,
 				7F02A4EA21AB1467007A6ECD /* Utility.swift in Sources */,
+				7F9C629721E5617200173A29 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,6 +633,7 @@
 				7F02A4EE21AB1946007A6ECD /* UtilityTests.swift in Sources */,
 				7F02A4CE21AB0F82007A6ECD /* AsyncTests.swift in Sources */,
 				7F02A4EC21AB1537007A6ECD /* AwaitTests.swift in Sources */,
+				7F9C629E21E5671500173A29 /* QueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,6 +644,7 @@
 				7F8FA74921AEDD3D00A93E97 /* UtilityTests.swift in Sources */,
 				7F8FA74721AEDD3D00A93E97 /* AsyncTests.swift in Sources */,
 				7F8FA74821AEDD3D00A93E97 /* AwaitTests.swift in Sources */,
+				7F9C629D21E5671400173A29 /* QueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +655,7 @@
 				7F8FA74C21AEDD3E00A93E97 /* UtilityTests.swift in Sources */,
 				7F8FA74A21AEDD3E00A93E97 /* AsyncTests.swift in Sources */,
 				7F8FA74B21AEDD3E00A93E97 /* AwaitTests.swift in Sources */,
+				7F9C629C21E5671400173A29 /* QueueTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,6 +666,7 @@
 				7F8FA79A21AEF90700A93E97 /* Await.swift in Sources */,
 				7F8FA79921AEF90700A93E97 /* Async.swift in Sources */,
 				7F8FA79B21AEF90700A93E97 /* Utility.swift in Sources */,
+				7F9C629821E5626800173A29 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +677,7 @@
 				7F8FA79D21AEF90800A93E97 /* Await.swift in Sources */,
 				7F8FA79C21AEF90800A93E97 /* Async.swift in Sources */,
 				7F8FA79E21AEF90800A93E97 /* Utility.swift in Sources */,
+				7F9C629921E5626900173A29 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
