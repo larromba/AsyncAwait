@@ -25,11 +25,8 @@ final class AsyncTests: XCTestCase {
         let async = Async.success(item)
 
         // test
-        waitAsync { completion in
-            let result = try? await(async)
-            XCTAssertEqual(item, result)
-            completion()
-        }
+        let result = try? await(async)
+        XCTAssertEqual(item, result)
     }
 
     func testAsyncFailureConvenience() {
@@ -40,18 +37,13 @@ final class AsyncTests: XCTestCase {
         let async = Async<String>.failure(error)
 
         // test
-        waitAsync { completion in
-            do {
-                try await(async)
-                XCTFail("expected error")
-                completion()
-            } catch let nsError as NSError {
-                XCTAssertEqual(nsError, error)
-                completion()
-            } catch {
-                XCTFail("expected NSError")
-                completion()
-            }
+        do {
+            try await(async)
+            XCTFail("expected error")
+        } catch let nsError as NSError {
+            XCTAssertEqual(nsError, error)
+        } catch {
+            XCTFail("expected NSError")
         }
     }
 }

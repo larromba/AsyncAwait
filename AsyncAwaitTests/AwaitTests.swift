@@ -108,7 +108,7 @@ final class AwaitTests: XCTestCase {
         // mocks
         var progress = [Double]()
 
-        waitAsync { completion in
+        waitAsync(for: 1.0) { completion in
             // sut
             async({
                 // test
@@ -116,7 +116,7 @@ final class AwaitTests: XCTestCase {
                                   self.asyncFunction(delay: 0.2),
                                   self.asyncFunction(delay: 0.3),
                                   self.asyncFunction(delay: 0.4),
-                                  self.asyncFunction(delay: 0.45)],
+                                  self.asyncFunction(delay: 0.5)],
                                  progress: { progress += [$0] })
                 XCTAssertEqual(progress, [1.0 / 5.0, 2.0 / 5.0, 3.0 / 5.0, 4.0 / 5.0, 5.0 / 5.0])
                 completion()
