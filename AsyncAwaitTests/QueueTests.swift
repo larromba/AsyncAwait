@@ -4,11 +4,13 @@ import XCTest
 
 final class QueueTests: XCTestCase {
     func testOnAsyncExecutesCallbackOnBackgroundThread() {
-        let expectation = self.expectation(description: "callback executes")
-        DispatchQueue.asyncAwait.async {
-            XCTAssertFalse(Thread.isMainThread)
-            expectation.fulfill()
+        waitAsync { completion in
+            // sut
+            DispatchQueue.asyncAwait.async {
+                // test
+                XCTAssertFalse(Thread.isMainThread)
+                completion()
+            }
         }
-        wait(for: 0.5, completion: nil)
     }
 }

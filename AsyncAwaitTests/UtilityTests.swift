@@ -4,11 +4,13 @@ import XCTest
 
 final class UtilityTests: XCTestCase {
     func testOnMainExecutesCallbackOnMainThread() {
-        let expectation = self.expectation(description: "callback executes")
-        onMain {
-            XCTAssertTrue(Thread.isMainThread)
-            expectation.fulfill()
+        waitAsync { completion in
+            // sut
+            onMain {
+                // test
+                XCTAssertTrue(Thread.isMainThread)
+                completion()
+            }
         }
-        wait(for: 0.5, completion: nil)
     }
 }

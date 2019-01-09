@@ -8,107 +8,123 @@ final class AwaitTests: XCTestCase {
     }
 
     func testAwaitReturnsValueAndCompletesSuccessfully() {
-        let delay = 1.0
-        let expectation = self.expectation(description: "await waits and completes")
-        async({
-            var number = try await(self.asyncFunction(delay: delay))
-            number += try await(self.asyncFunction(delay: delay))
-            XCTAssertEqual(number, 2)
-            expectation.fulfill()
-        }, onError: { error in
-            XCTFail(error.localizedDescription)
-        })
-        wait(for: (delay * 2) + 0.5, completion: nil)
+        waitAsync { completion in
+            // sut
+            async({
+                // test
+                var number = try await(self.asyncFunction(delay: 0.1))
+                number += try await(self.asyncFunction(delay: 0.1))
+                XCTAssertEqual(number, 2)
+                completion()
+            }, onError: { error in
+                XCTFail(error.localizedDescription)
+                completion()
+            })
+        }
     }
 
     func testAwaitCatchesError() {
-        let delay = 1.0
-        let expectation = self.expectation(description: "await throws error")
-        async({
-            _ = try await(self.asyncFunction(delay: delay, isError: true))
-            XCTFail("shouldn't be reached")
-        }, onError: { _ in
-            expectation.fulfill()
-        })
-        wait(for: delay + 0.5, completion: nil)
+        waitAsync { completion in
+            // sut
+            async({
+                _ = try await(self.asyncFunction(delay: 0.1, isError: true))
+                XCTFail("shouldn't be reached")
+                completion()
+            }, onError: { _ in
+                // test
+                completion()
+            })
+        }
     }
 
     func testAwaitCanBeNested() {
-        let delay = 1.0
-        let expectation = self.expectation(description: "await waits and completes")
-        async({
-            _ = try await(self.asyncFunctionNested(delay: delay))
-            expectation.fulfill()
-        }, onError: { error in
-            XCTFail(error.localizedDescription)
-        })
-        wait(for: delay + 0.5, completion: nil)
+        waitAsync { completion in
+            // sut
+            async({
+                // test
+                _ = try await(self.asyncFunctionNested(delay: 0.1))
+                completion()
+            }, onError: { error in
+                XCTFail(error.localizedDescription)
+                completion()
+            })
+        }
     }
 
     func testAwaitAll() {
-        let delay = 1.0
-        let expectation = self.expectation(description: "await waits and completes")
-        async({
-            let results = try awaitAll([self.asyncFunction(delay: delay),
-                                        self.asyncFunction(delay: delay + 0.1),
-                                        self.asyncFunction(delay: delay + 0.2)])
-            XCTAssertEqual(results.0.count, 3)
-            XCTAssertEqual(results.1.count, 0)
-            expectation.fulfill()
-        }, onError: { error in
-            XCTFail(error.localizedDescription)
-        })
-        wait(for: delay + 0.5, completion: nil)
+        waitAsync { completion in
+            // sut
+            async({
+                // test
+                let results = try awaitAll([self.asyncFunction(delay: 0.1),
+                                            self.asyncFunction(delay: 0.2),
+                                            self.asyncFunction(delay: 0.3)])
+                XCTAssertEqual(results.0.count, 3)
+                XCTAssertEqual(results.1.count, 0)
+                completion()
+            }, onError: { error in
+                XCTFail(error.localizedDescription)
+                completion()
+            })
+        }
     }
 
     func testAwaitAllIgnoresError() {
-        let delay = 1.0
-        let expectation = self.expectation(description: "await waits and completes")
-        async({
-            let results = try awaitAll([self.asyncFunction(delay: delay),
-                                        self.asyncFunction(delay: delay + 0.1, isError: true),
-                                        self.asyncFunction(delay: delay + 0.2)])
-            XCTAssertEqual(results.0.count, 2)
-            XCTAssertEqual(results.1.count, 1)
-            expectation.fulfill()
-        }, onError: { error in
-            XCTFail(error.localizedDescription)
-        })
-        wait(for: delay + 0.5, completion: nil)
+        waitAsync { completion in
+            // sut
+            async({
+                // test
+                let results = try awaitAll([self.asyncFunction(delay: 0.1),
+                                            self.asyncFunction(delay: 0.2, isError: true),
+                                            self.asyncFunction(delay: 0.3)])
+                XCTAssertEqual(results.0.count, 2)
+                XCTAssertEqual(results.1.count, 1)
+                completion()
+            }, onError: { error in
+                XCTFail(error.localizedDescription)
+                completion()
+            })
+        }
     }
 
     func testAwaitAllCanBailEarly() {
-        let delay = 1.0
-        let expectation = self.expectation(description: "await throws error")
-        async({
-            _ = try awaitAll([self.asyncFunction(delay: delay),
-                              self.asyncFunction(delay: delay + 0.1, isError: true),
-                              self.asyncFunction(delay: delay + 0.2)],
-                             bailEarly: true)
-            XCTFail("shouldn't be reached")
-        }, onError: { _ in
-            expectation.fulfill()
-        })
-        wait(for: delay + 0.5, completion: nil)
+        waitAsync { completion in
+            // sut
+            async({
+                _ = try awaitAll([self.asyncFunction(delay: 0.1),
+                                  self.asyncFunction(delay: 0.2, isError: true),
+                                  self.asyncFunction(delay: 0.3)],
+                                 bailEarly: true)
+                XCTFail("shouldn't be reached")
+                completion()
+            }, onError: { _ in
+                // test
+                completion()
+            })
+        }
     }
 
     func testAwaitAllProgress() {
-        let delay = 0.1
-        let expectation = self.expectation(description: "await throws error")
+        // mocks
         var progress = [Double]()
-        async({
-            _ = try awaitAll([self.asyncFunction(delay: delay),
-                              self.asyncFunction(delay: delay + 0.1),
-                              self.asyncFunction(delay: delay + 0.2),
-                              self.asyncFunction(delay: delay + 0.3),
-                              self.asyncFunction(delay: delay + 0.4)],
-                             progress: { progress += [$0] })
-            XCTAssertEqual(progress, [1.0 / 5.0, 2.0 / 5.0, 3.0 / 5.0, 4.0 / 5.0, 5.0 / 5.0])
-            expectation.fulfill()
-        }, onError: { error in
-            XCTFail(error.localizedDescription)
-        })
-        wait(for: (delay + 0.5) + 0.5, completion: nil)
+
+        waitAsync { completion in
+            // sut
+            async({
+                // test
+                _ = try awaitAll([self.asyncFunction(delay: 0.1),
+                                  self.asyncFunction(delay: 0.2),
+                                  self.asyncFunction(delay: 0.3),
+                                  self.asyncFunction(delay: 0.4),
+                                  self.asyncFunction(delay: 0.45)],
+                                 progress: { progress += [$0] })
+                XCTAssertEqual(progress, [1.0 / 5.0, 2.0 / 5.0, 3.0 / 5.0, 4.0 / 5.0, 5.0 / 5.0])
+                completion()
+            }, onError: { error in
+                XCTFail(error.localizedDescription)
+                completion()
+            })
+        }
     }
 
     // MARK: - private
@@ -130,8 +146,8 @@ final class AwaitTests: XCTestCase {
             async({
                 let value = try await(self.asyncFunction(delay: delay))
                 completion(.success("\(value)"))
-            }, onError: { _ in
-                completion(.failure(AwaitError.mock))
+            }, onError: { error in
+                completion(.failure(error))
             })
         }
     }

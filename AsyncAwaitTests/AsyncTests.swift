@@ -4,31 +4,54 @@ import XCTest
 
 final class AsyncTests: XCTestCase {
     func testAsyncCallbackIsNotOnMainThread() {
-        async({
-            XCTAssertFalse(Thread.isMainThread)
-        }, onError: { error in
-            XCTFail(error.localizedDescription)
-        })
-        wait(for: 0.1, completion: nil)
+        waitAsync { completion in
+            // sut
+            async({
+                // test
+                XCTAssertFalse(Thread.isMainThread)
+                completion()
+            }, onError: { error in
+                XCTFail(error.localizedDescription)
+                completion()
+            })
+        }
     }
 
     func testAsyncSuccessConvenience() {
+        // mocks
         let item = "a string"
+
+        // sut
         let async = Async.success(item)
-        let result = try? await(async)
-        XCTAssertEqual(item, result)
+
+        // test
+        waitAsync { completion in
+            let result = try? await(async)
+            XCTAssertEqual(item, result)
+            completion()
+        }
     }
 
     func testAsyncFailureConvenience() {
-        let expectedError = NSError(domain: "domain", code: 0, userInfo: nil)
-        let async = Async<String>.failure(expectedError)
-        do {
-            try await(async)
-            XCTFail("expected error")
-        } catch let error as NSError {
-            XCTAssertEqual(error, expectedError)
-        } catch {
-            XCTFail("expected NSError")
+        // mocks
+        let error = NSError(domain: "domain", code: 0, userInfo: nil)
+
+        // sut
+        let async = Async<String>.failure(error)
+
+        // test
+        waitAsync { completion in
+            do {
+                try await(async)
+                XCTFail("expected error")
+                completion()
+            } catch let nsError as NSError {
+                XCTAssertEqual(nsError, error)
+                completion()
+            } catch {
+                XCTFail("expected NSError")
+                completion()
+            }
         }
     }
 }

@@ -39,7 +39,7 @@ public func awaitAll<T>(_ operations: [Async<T>], bailEarly: Bool = false,
             switch result {
             case .success(let resultValue):
                 values += [resultValue]
-                // TODO: if many operations complete at exactly the same time, maybe this won't work as expected?
+                // TODO: if many operations complete at *exactly* the same time, maybe this won't work as expected?
                 progress?(Double(values.count + errors.count) / Double(operations.count))
             case .failure(let resultError):
                 errors += [resultError]
