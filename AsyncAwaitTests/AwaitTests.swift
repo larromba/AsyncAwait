@@ -7,13 +7,13 @@ final class AwaitTests: XCTestCase {
         case mock
     }
 
-    func testAwaitReturnsValueAndCompletesSuccessfully() {
+    func test_whenAwaitCalled_expectValueAndNoError() {
         waitAsync { completion in
             // sut
             async({
                 // test
-                var number = try await(self.asyncFunction(delay: 0.1))
-                number += try await(self.asyncFunction(delay: 0.1))
+                var number = try await(self.asyncFunction())
+                number += try await(self.asyncFunction())
                 XCTAssertEqual(number, 2)
                 completion()
             }, onError: { error in
@@ -23,11 +23,11 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func testAwaitCatchesError() {
+    func test_whenAwaitCalled_expectError() {
         waitAsync { completion in
             // sut
             async({
-                _ = try await(self.asyncFunction(delay: 0.1, isError: true))
+                _ = try await(self.asyncFunction(isError: true))
                 XCTFail("shouldn't be reached")
                 completion()
             }, onError: { _ in
@@ -37,12 +37,42 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func testAwaitCanBeNested() {
+    func test_whenAwaitCalled_expectThreadOnBackground() {
         waitAsync { completion in
             // sut
             async({
                 // test
-                _ = try await(self.asyncFunctionNested(delay: 0.1))
+                _ = try await(self.asyncFunction())
+                XCTAssertFalse(Thread.isMainThread)
+                completion()
+            }, onError: { _ in
+                XCTFail("shouldn't be reached")
+                completion()
+            })
+        }
+    }
+
+    func test_whenAwaitCalled_expectErrorThrownOnMainThread() {
+        waitAsync { completion in
+            // sut
+            async({
+                _ = try await(self.asyncFunction(isError: true))
+                XCTFail("shouldn't be reached")
+                completion()
+            }, onError: { _ in
+                // test
+                XCTAssertTrue(Thread.isMainThread)
+                completion()
+            })
+        }
+    }
+
+    func test_whenNestedAwaitCalled_expectNoError() {
+        waitAsync { completion in
+            // sut
+            async({
+                // test
+                _ = try await(self.asyncFunctionNested())
                 completion()
             }, onError: { error in
                 XCTFail(error.localizedDescription)
@@ -51,7 +81,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func testAwaitAll() {
+    func test_whenAwaitAllCalled_expectNoError() {
         waitAsync { completion in
             // sut
             async({
@@ -69,7 +99,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func testAwaitAllIgnoresError() {
+    func test_whenAwaitAllCalled_expectIgnoresSingleError() {
         waitAsync { completion in
             // sut
             async({
@@ -87,7 +117,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func testAwaitAllCanBailEarly() {
+    func test_whenAwaitAllCalledWithBailEarly_expectError() {
         waitAsync { completion in
             // sut
             async({
@@ -104,7 +134,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func testAwaitAllProgress() {
+    func test_whenAwaitAllCalled_expectProgressUpdates() {
         // mocks
         var progress = [Double]()
 
@@ -129,7 +159,7 @@ final class AwaitTests: XCTestCase {
 
     // MARK: - private
 
-    private func asyncFunction(delay: TimeInterval, isError: Bool = false) -> Async<Int> {
+    private func asyncFunction(delay: TimeInterval = 0, isError: Bool = false) -> Async<Int> {
         return Async { completion in
             DispatchQueue.global().asyncAfter(deadline: .now() + delay, execute: {
                 if isError {
@@ -141,7 +171,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    private func asyncFunctionNested(delay: TimeInterval) -> Async<String> {
+    private func asyncFunctionNested(delay: TimeInterval = 0) -> Async<String> {
         return Async { completion in
             async({
                 let value = try await(self.asyncFunction(delay: delay))

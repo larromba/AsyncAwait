@@ -3,7 +3,7 @@ import TestExtensions
 import XCTest
 
 final class UtilityTests: XCTestCase {
-    func testOnMainExecutesCallbackOnMainThread() {
+    func test_whenOnMainConvenienceCalled_expectCodeOnMainThread() {
         waitAsync { completion in
             // sut
             onMain {

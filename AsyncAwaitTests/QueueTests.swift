@@ -3,7 +3,7 @@ import TestExtensions
 import XCTest
 
 final class QueueTests: XCTestCase {
-    func testOnAsyncExecutesCallbackOnBackgroundThread() {
+    func test_whenDispatchQueueCalled_expectBackgroundThread() {
         waitAsync { completion in
             // sut
             DispatchQueue.asyncAwait.async {
