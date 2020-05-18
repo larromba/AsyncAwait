@@ -7,7 +7,7 @@ final class AwaitTests: XCTestCase {
         case mock
     }
 
-    func test_whenAwaitCalled_expectValueAndNoError() {
+    func test_await_whenCalled_expectValue() {
         waitAsync { completion in
             // sut
             async({
@@ -23,7 +23,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func test_whenAwaitCalled_expectError() {
+    func test_await_whenCalled_expectError() {
         waitAsync { completion in
             // sut
             async({
@@ -37,11 +37,12 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func test_whenAwaitCalled_expectThreadOnBackground() {
+    func test_await_whenCalled_expectThreadStaysOnBackground() {
         waitAsync { completion in
             // sut
             async({
                 // test
+                XCTAssertFalse(Thread.isMainThread)
                 _ = try await(self.asyncFunction())
                 XCTAssertFalse(Thread.isMainThread)
                 completion()
@@ -52,7 +53,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func test_whenAwaitCalled_expectErrorThrownOnMainThread() {
+    func test_await_whenCalled_expectErrorThrownOnMainThread() {
         waitAsync { completion in
             // sut
             async({
@@ -67,7 +68,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func test_whenNestedAwaitCalled_expectNoError() {
+    func test_await_whenNestedFunctionCalled_expectValue() {
         waitAsync { completion in
             // sut
             async({
@@ -81,7 +82,9 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func test_whenAwaitAllCalled_expectNoError() {
+    // MARK: - await all
+
+    func test_awaitAll_whenCalled_expectValue() {
         waitAsync { completion in
             // sut
             async({
@@ -99,7 +102,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func test_whenAwaitAllCalled_expectIgnoresSingleError() {
+    func test_awaitAll_whenCalled_expectIgnoresSingleError() {
         waitAsync { completion in
             // sut
             async({
@@ -117,7 +120,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func test_whenAwaitAllCalledWithBailEarly_expectError() {
+    func test_awaitAll_whenCalledWithBailEarlyFlag_expectError() {
         waitAsync { completion in
             // sut
             async({
@@ -134,7 +137,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    func test_whenAwaitAllCalled_expectProgressUpdates() {
+    func test_awaitAll_whenCalled_expectProgressUpdates() {
         // mocks
         var progress = [Double]()
 

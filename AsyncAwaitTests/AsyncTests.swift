@@ -3,7 +3,7 @@ import TestExtensions
 import XCTest
 
 final class AsyncTests: XCTestCase {
-    func test_whenAsyncFired_expectNotOnMainThread() {
+    func test_asyncCallback_whenFired_expectNotOnMainThread() {
         waitAsync { completion in
             // sut
             async({
@@ -17,7 +17,7 @@ final class AsyncTests: XCTestCase {
         }
     }
 
-    func test_whenSuccessConvenienceCalled_expectString() {
+    func test_asyncSuccessConvenience_whenCalled_expectValue() {
         // mocks
         let item = "a string"
 
@@ -29,7 +29,7 @@ final class AsyncTests: XCTestCase {
         XCTAssertEqual(item, result)
     }
 
-    func test_whenFailureConvenienceCalled_expectError() {
+    func test_asyncFailureConvenience_whenCalled_expectError() {
         // mocks
         let error = NSError(domain: "domain", code: 0, userInfo: nil)
 
