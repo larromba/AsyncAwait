@@ -3,12 +3,14 @@
 import Foundation
 import Result
 
+// callback is called on background thread
+// onError is called on main thread
 public func async(_ callback: @escaping () throws -> Void, onError: @escaping (Error) -> Void) {
     DispatchQueue.asyncAwait.async {
         do {
             try callback()
         } catch {
-            onError(error)
+            onMain { onError(error) }
         }
     }
 }
