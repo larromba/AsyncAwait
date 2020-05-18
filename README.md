@@ -5,11 +5,17 @@
 | [![Build Status](https://travis-ci.com/larromba/AsyncAwait.svg?branch=master)](https://travis-ci.com/larromba/AsyncAwait) | [![Build Status](https://travis-ci.com/larromba/AsyncAwait.svg?branch=dev)](https://travis-ci.com/larromba/AsyncAwait) |
 
 ## About
-This is a simple [async/await](https://javascript.info/async-await) implementation for swift. This concept might become [part of Swift](https://gist.github.com/lattner/429b9070918248274f25b714dcfc7619) at some point.
+This is a simple [async/await](https://javascript.info/async-await) implementation for Swift. This concept might become [part of Swift](https://gist.github.com/lattner/429b9070918248274f25b714dcfc7619) at some point.
 
-Why bother? Well, async callbacks are a real nightmare. I hate them. I've tried various implementations to get round callbacks. Like everyone, I first wrote nested callbacks, and soon met [hell](http://callbackhell.com/). I then tried wiritng callbacks that pass control to a new function, but this makes control flow hard to follow / maintain. I then tried writing my own Promise based on [this](https://github.com/khanlou/Promise/blob/master/Promise/Promise.swift), but this didn't play well with Swift's type inference in Xcode, and things soon become painfully slow / flow blocking. I then tried writing a naive solution whereby you store empty callbacks to fire off your real callbacks (what? exactly), that was in some sort of protocol extension, with context saved in a struct. Really I was clutching at straws, and felt somewhat underwhelmed with life. Then I read about [this library](https://github.com/freshOS/then/tree/master/Source). It contains a really great idea using `DispatchQueue` to mimic async and await. Clever shit! However the implementation is based around using promises, which I didn't want to use, because If async / await becomes part of Swift in the near future, converting Promise code to a more native solution might be painful. Anyway, I took this code and used it as inspiration to make a custom async / await solution without promises. Perhaps this is a controversial move, but life is short, and my nerd level doesn't quite hack it. Anyway, with much excitement I sprung back into my cave and refactored a [personal project](http://github.com/larromba/grafitti-backgrounds) to use it. Wow - it went faster than I thought, the tests didn’t break, shit just was perfect. Wonderful! I’m a fan. Sign me up. The beans are cool.
+Traditional callbacks are [hell](http://callbackhell.com/). Writing callbacks that pass control flow to a function is better, but obfuscates the control flow. Promises are a decent solution, but after writing my own Promise based on [this](https://github.com/khanlou/Promise/blob/master/Promise/Promise.swift), I felt its design to be somewhat fishy. Swift's type inference in Xcode also slows down in larger codebases, blocking flow and slowing compilation time. 
 
-A side note - before getting all excited, like me, and using it all over the shop, it's worth reading [this grounded article](http://thecodebarbarian.com/2015/03/20/callback-hell-is-a-myth). It makes some great points about new abstractions often hiding fundamental problems in your code design / thinking. Remember callbacks aren't bad, but this solution definitely seems an improve many of the problems we face with callbacks, in my opinion. It's also a pleasure to work with, and intuitive. Just take extra care in designing principled code, and life will remain top dog.
+In all honesty, [Combine](https://developer.apple.com/documentation/combine) is likely the future of iOS, so go learn that. It's much better than [RxSwift](https://github.com/ReactiveX/RxSwift). However, there's something I conceptually prefer about async / await over reactive solutions. You write code like you read a book, which to me, seems more intuitive. Reactive programming is great in some cases, as it reduces state, but to me it's not to be used everywhere, as it often obfuscates easy things, and there's no shame in admitting that. Programming shouldn't be made harder than it already is, and we're all guilty of doing it.
+
+Nonetheless, after much searching, I found [this library](https://github.com/freshOS/then/tree/master/Source). It contains a really great idea using `DispatchQueue` to mimic async and await. However the implementation is based around using Promises, which I didn't want to use. So I took the key idea and hacked something simple together.
+
+Before using, it's worth reading [this grounded article](http://thecodebarbarian.com/2015/03/20/callback-hell-is-a-myth). It makes some great points about new abstractions often hiding fundamental problems in your code design / thinking. Remember callbacks aren't necessarily bad, but this solution definitely seems to improve many of the key problems faced using callbacks. 
+
+See this in a real [ios project](http://github.com/larromba/easylife), or [mac project](http://github.com/larromba/graffiti-backgrounds). 
 
 ## Installation
 
@@ -28,15 +34,18 @@ carthage update
 ## Usage
 
 ```swift
-// Current callback approaches
+// 
+// comparing callback approaches
+//
 
-// Hell:
+// 1. callback hell:
 
 func foo(completion: (Result<String>)) {
     someLongFunction { result in
         switch result {
         case .success(let value):
-            self.someLongFunction { result in
+            //...
+            self.someLongFunction2 { result in
                 switch result {
                 case .success(let value):
                     //...
@@ -51,12 +60,13 @@ func foo(completion: (Result<String>)) {
     }
 }
 
-// Hell-ish:
+// 2. passing the control flow around
 
 func foo(completion: (Result<String>)) {
     someLongFunction { result in
         switch result {
         case .success(let value):
+            //...
             foo2(completion: completion)
         case .failure(let error):
             completion(.failure(error))
@@ -65,7 +75,7 @@ func foo(completion: (Result<String>)) {
 }
 
 func foo2(completion: (Result<String>)) {
-    someLongFunction { result in
+    someLongFunction2 { result in
         switch result {
         case .success(let value):
             //...
@@ -76,32 +86,44 @@ func foo2(completion: (Result<String>)) {
     }
 }
 
-// AwaitAsync approach
+// 3. using promises
 
-// Heaven:
+func foo() -> Single<String> {
+    return Single.create { seal in
+        let value = someLongFunction
+            .flatMap(someLongFunction2)
+            .flatMap(someLongFunction3)
+        //...
+        seal(.success("bar"))
+        return Disposables.create()
+    }
+}
+
+// 4. using await / async
+// example #1
 
 func foo() -> Async<String> {
     return Async { completion in
         async({
             let value1 = try await(self.someLongFunction(...))
-            let value2 = try await(self.someLongFunction(...))
+            let value2 = try await(self.someLongFunction2(...))
             //...
             completion(.success("bar"))
         }, onError: { error in
             completion(.failure(error))
-            })
-        }
+        })
     }
+}
 
-// Nirvana:
+// example #2
 
-func superFoo() -> Async<String> {
+func foo() -> Async<String> {
     return Async { completion in
         async({
             let allThoseOperations = (0..<100).map { _ in foo() }
             let results = try awaitAll(allThoseOperations)
             //...
-            completion(.success("bar-humbug no more!"))
+            completion(.success("bar"))
         }, onError: { error in
             completion(.failure(error))
         })
