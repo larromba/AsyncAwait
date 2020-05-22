@@ -23,7 +23,7 @@ See this in a real [ios project](http://github.com/larromba/easylife), or [mac p
 
 ```
 // Cartfile
-github "larromba/asyncawait" ~> 1.0
+github "larromba/asyncawait" ~> 2.0
 ```
 
 ```
