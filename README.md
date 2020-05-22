@@ -40,7 +40,7 @@ carthage update
 
 // 1. callback hell:
 
-func foo(completion: (Result<String>) -> Void) {
+func foo(completion: (Result<String, Error>) -> Void) {
     someLongFunction { result in
         switch result {
         case .success(let value):
@@ -62,7 +62,7 @@ func foo(completion: (Result<String>) -> Void) {
 
 // 2. passing the control flow around
 
-func foo(completion: (Result<String>) -> Void) {
+func foo(completion: (Result<String, Error>) -> Void) {
     someLongFunction { result in
         switch result {
         case .success(let value):
@@ -74,7 +74,7 @@ func foo(completion: (Result<String>) -> Void) {
     }
 }
 
-func foo2(completion: (Result<String>) -> Void) {
+func foo2(completion: (Result<String, Error>) -> Void) {
     someLongFunction2 { result in
         switch result {
         case .success(let value):

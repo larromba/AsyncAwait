@@ -1,7 +1,6 @@
 // modified from "freshOS/then" https://github.com/freshOS/then/tree/master/Source
 
 import Foundation
-import Result
 
 // callback is called on background thread
 // onError is called on main thread
@@ -16,7 +15,7 @@ public func async(_ callback: @escaping () throws -> Void, onError: @escaping (E
 }
 
 public struct Async<T> {
-    public typealias Completion = (Result<T>) -> Void
+    public typealias Completion = (Result<T, Error>) -> Void
 
     let completion: (@escaping Completion) -> Void
 
