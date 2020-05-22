@@ -4,7 +4,7 @@ jobs:
         - script: xcodebuild -project AsyncAwait.xcodeproj -scheme AsyncAwaitTests-macOS -destination platform\=OS\ X,arch\=x86_64 test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED=NO TRAVIS=1 | xcpretty && exit ${PIPESTATUS[0]}
         - script: xcodebuild -project AsyncAwait.xcodeproj -scheme AsyncAwaitTests-iOS -destination platform\=iOS\ Simulator,name=iPhone\ 6 test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED=NO TRAVIS=1 | xcpretty && exit ${PIPESTATUS[0]}
         - script: xcodebuild -project AsyncAwait.xcodeproj -scheme AsyncAwaitTests-tvOS -destination platform\=tvOS\ Simulator,name=Apple\ TV test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGN_ENTITLEMENTS="" CODE_SIGNING_ALLOWED=NO TRAVIS=1 | xcpretty && exit ${PIPESTATUS[0]}
-osx_image: xcode10
+osx_image: xcode11.4
 addons:
   homebrew:
     packages:
