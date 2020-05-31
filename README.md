@@ -102,7 +102,7 @@ func foo() -> Single<String> {
 // 4. using await / async
 // example #1
 
-func foo() -> Async<String> {
+func foo() -> Async<String, Error> {
     return Async { completion in
         async({
             let value1 = try await(self.someLongFunction(...))
@@ -117,7 +117,7 @@ func foo() -> Async<String> {
 
 // example #2
 
-func foo() -> Async<String> {
+func foo() -> Async<String, Error> {
     return Async { completion in
         async({
             let allThoseOperations = (0..<100).map { _ in foo() }
