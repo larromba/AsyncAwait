@@ -3,9 +3,9 @@
 import Foundation
 
 @discardableResult
-public func await<T>(_ operation: Async<T>) throws -> T {
+public func await<T, U: Error>(_ operation: Async<T, U>) throws -> T {
     var value: T!
-    var error: Error?
+    var error: U?
     let group = DispatchGroup()
 
     group.enter()
@@ -25,10 +25,9 @@ public func await<T>(_ operation: Async<T>) throws -> T {
 }
 
 @discardableResult
-public func awaitAll<T>(_ operations: [Async<T>], bailEarly: Bool = false,
-                        progress: ((Double) -> Void)? = nil) throws -> ([T], [Error]) {
-    var values = [T]()
-    var errors = [Error]()
+public func awaitAll<T, U: Error>(_ operations: [Async<T, U>], bailEarly: Bool = false,
+                                  progress: ((Double) -> Void)? = nil) throws -> [Result<T, U>] {
+    var results = [Result<T, U>]()
     let group = DispatchGroup()
     var isBailed = false
 
@@ -36,16 +35,15 @@ public func awaitAll<T>(_ operations: [Async<T>], bailEarly: Bool = false,
         group.enter()
         operation.completion { result in
             guard !isBailed else { return }
+            results += [result]
+            progress?(Double(results.count) / Double(operations.count))
             switch result {
-            case .success(let resultValue):
-                values += [resultValue]
-                // if many operations complete at exactly the same time, progress won't work as expected
-                progress?(Double(values.count + errors.count) / Double(operations.count))
-            case .failure(let resultError):
-                errors += [resultError]
+            case .success:
+                break
+            case .failure:
                 guard !bailEarly else {
                     isBailed = true
-                    (values.count..<operations.count).forEach { _ in group.leave() }
+                    ((results.count - 1)..<operations.count).forEach { _ in group.leave() }
                     return
                 }
             }
@@ -54,6 +52,14 @@ public func awaitAll<T>(_ operations: [Async<T>], bailEarly: Bool = false,
     }
     group.wait()
 
-    guard !isBailed else { throw errors[0] }
-    return (values, errors)
+    guard !isBailed else {
+        switch results.last {
+        case .failure(let error):
+            throw error
+        default:
+            assertionFailure("AsyncAwait Internal Error: if isBailed == true, the last result should be an error")
+            return []
+        }
+    }
+    return results
 }

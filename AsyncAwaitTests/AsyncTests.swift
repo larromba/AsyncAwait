@@ -22,7 +22,7 @@ final class AsyncTests: XCTestCase {
         let item = "a string"
 
         // sut
-        let async = Async.success(item)
+        let async = Async<String, Error>.success(item)
 
         // test
         let result = try? await(async)
@@ -34,7 +34,7 @@ final class AsyncTests: XCTestCase {
         let error = NSError(domain: "domain", code: 0, userInfo: nil)
 
         // sut
-        let async = Async<String>.failure(error)
+        let async = Async<String, Error>.failure(error)
 
         // test
         do {

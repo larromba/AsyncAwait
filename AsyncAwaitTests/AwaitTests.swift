@@ -92,8 +92,8 @@ final class AwaitTests: XCTestCase {
                 let results = try awaitAll([self.asyncFunction(delay: 0.1),
                                             self.asyncFunction(delay: 0.2),
                                             self.asyncFunction(delay: 0.3)])
-                XCTAssertEqual(results.0.count, 3)
-                XCTAssertEqual(results.1.count, 0)
+                XCTAssertEqual(results.compactMap { $0.getValue() }.count, 3)
+                XCTAssertEqual(results.compactMap { $0.getError() }.count, 0)
                 completion()
             }, onError: { error in
                 XCTFail(error.localizedDescription)
@@ -110,8 +110,8 @@ final class AwaitTests: XCTestCase {
                 let results = try awaitAll([self.asyncFunction(delay: 0.1),
                                             self.asyncFunction(delay: 0.2, isError: true),
                                             self.asyncFunction(delay: 0.3)])
-                XCTAssertEqual(results.0.count, 2)
-                XCTAssertEqual(results.1.count, 1)
+                XCTAssertEqual(results.compactMap { $0.getValue() }.count, 2)
+                XCTAssertEqual(results.compactMap { $0.getError() }.count, 1)
                 completion()
             }, onError: { error in
                 XCTFail(error.localizedDescription)
@@ -162,11 +162,11 @@ final class AwaitTests: XCTestCase {
 
     // MARK: - private
 
-    private func asyncFunction(delay: TimeInterval = 0, isError: Bool = false) -> Async<Int> {
+    private func asyncFunction(delay: TimeInterval = 0, isError: Bool = false) -> Async<Int, AwaitError> {
         return Async { completion in
             DispatchQueue.global().asyncAfter(deadline: .now() + delay, execute: {
                 if isError {
-                    completion(.failure(AwaitError.mock))
+                    completion(.failure(.mock))
                 } else {
                     completion(.success(1))
                 }
@@ -174,7 +174,7 @@ final class AwaitTests: XCTestCase {
         }
     }
 
-    private func asyncFunctionNested(delay: TimeInterval = 0) -> Async<String> {
+    private func asyncFunctionNested(delay: TimeInterval = 0) -> Async<String, Error> {
         return Async { completion in
             async({
                 let value = try await(self.asyncFunction(delay: delay))
