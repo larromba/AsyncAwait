@@ -82,6 +82,20 @@ final class AwaitTests: XCTestCase {
         }
     }
 
+    func test_await_whenWrappedSyncCodeCalled_expectNoDeadlock() {
+        waitAsync { completion in
+            // sut
+            async({
+                // test
+                _ = try await(self.asyncFunctionWrappingSyncCode())
+                completion()
+            }, onError: { error in
+                XCTFail(error.localizedDescription)
+                completion()
+            })
+        }
+    }
+
     // MARK: - await all
 
     func test_awaitAll_whenCalled_expectValue() {
@@ -160,6 +174,21 @@ final class AwaitTests: XCTestCase {
         }
     }
 
+    func test_awaitAll_whenWrappedSyncCodeCalled_expectNoDeadlock() {
+        waitAsync(for: 2.0) { completion in
+            // sut
+            async({
+                // test
+                let functions = (0..<10).flatMap { _ in [self.syncCode()] }
+                _ = try awaitAll(functions)
+                completion()
+            }, onError: { error in
+                XCTFail(error.localizedDescription)
+                completion()
+            })
+        }
+    }
+
     // MARK: - private
 
     private func asyncFunction(delay: TimeInterval = 0, isError: Bool = false) -> Async<Int, AwaitError> {
@@ -179,6 +208,27 @@ final class AwaitTests: XCTestCase {
             async({
                 let value = try await(self.asyncFunction(delay: delay))
                 completion(.success("\(value)"))
+            }, onError: { error in
+                completion(.failure(error))
+            })
+        }
+    }
+
+    private func asyncFunctionWrappingSyncCode() -> Async<String, Error> {
+        return Async { completion in
+            async({
+                let value = try await(self.syncCode())
+                completion(.success("\(value)"))
+            }, onError: { error in
+                completion(.failure(error))
+            })
+        }
+    }
+
+    private func syncCode() -> Async<String, Error> {
+        return Async { completion in
+            async({
+                completion(.success(""))
             }, onError: { error in
                 completion(.failure(error))
             })

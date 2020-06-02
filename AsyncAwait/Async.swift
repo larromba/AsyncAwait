@@ -14,8 +14,8 @@ public func async(_ callback: @escaping () throws -> Void, onError: @escaping (E
     }
 }
 
-public struct Async<Success, Failure> where Failure: Error {
-    public typealias Completion = (Result<Success, Failure>) -> Void
+public struct Async<T, U: Error> {
+    public typealias Completion = (Result<T, U>) -> Void
 
     let completion: (@escaping Completion) -> Void
 
@@ -25,13 +25,13 @@ public struct Async<Success, Failure> where Failure: Error {
 }
 
 public extension Async {
-    static func success(_ item: Success) -> Async<Success, Failure> {
+    static func success(_ item: T) -> Async<T, U> {
         return Async { completion in
             completion(.success(item))
         }
     }
 
-    static func failure(_ error: Failure) -> Async<Success, Failure> {
+    static func failure(_ error: U) -> Async<T, U> {
         return Async { completion in
             completion(.failure(error))
         }

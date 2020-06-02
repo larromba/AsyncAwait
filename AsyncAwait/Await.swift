@@ -4,30 +4,32 @@ import Foundation
 
 @discardableResult
 public func await<T, U: Error>(_ operation: Async<T, U>) throws -> T {
-    var value: T!
-    var error: U?
+    var result: Result<T, U>?
     let group = DispatchGroup()
 
     group.enter()
-    operation.completion { result in
-        switch result {
-        case .success(let resultValue):
-            value = resultValue
-        case .failure(let resultError):
-            error = resultError
-        }
+    operation.completion { item in
+        result = item
         group.leave()
     }
-    group.wait()
+    if result == nil { // edge case: ensure group.leave() never called before group.wait()
+        group.wait()
+    }
 
-    if let error = error { throw error }
-    return value
+    switch result {
+    case .success(let item):
+        return item
+    case .failure(let error):
+        throw error
+    case .none:
+        fatalError("result should not be nil")
+    }
 }
 
 @discardableResult
 public func awaitAll<T, U: Error>(_ operations: [Async<T, U>], bailEarly: Bool = false,
                                   progress: ((Double) -> Void)? = nil) throws -> [Result<T, U>] {
-    var results = [Result<T, U>]()
+    let results = AtomicVariable<[Result<T, U>]>([])
     let group = DispatchGroup()
     var isBailed = false
 
@@ -35,25 +37,31 @@ public func awaitAll<T, U: Error>(_ operations: [Async<T, U>], bailEarly: Bool =
         group.enter()
         operation.completion { result in
             guard !isBailed else { return }
-            results += [result]
-            progress?(Double(results.count) / Double(operations.count))
+
+            results.mutate { results in
+                results += [result]
+            }
+            progress?(Double(results.value.count) / Double(operations.count))
+
             switch result {
             case .success:
                 break
             case .failure:
                 guard !bailEarly else {
                     isBailed = true
-                    ((results.count - 1)..<operations.count).forEach { _ in group.leave() }
+                    ((results.value.count - 1)..<operations.count).forEach { _ in group.leave() }
                     return
                 }
             }
             group.leave()
         }
     }
-    group.wait()
+    if results.value.count != operations.count { // edge case: ensure all group.leave() never called before group.wait()
+        group.wait()
+    }
 
     guard !isBailed else {
-        switch results.last {
+        switch results.value.last {
         case .failure(let error):
             throw error
         default:
@@ -61,5 +69,5 @@ public func awaitAll<T, U: Error>(_ operations: [Async<T, U>], bailEarly: Bool =
             return []
         }
     }
-    return results
+    return results.value
 }
