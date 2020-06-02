@@ -12,9 +12,7 @@ public func await<T, U: Error>(_ operation: Async<T, U>) throws -> T {
         result = item
         group.leave()
     }
-    if result == nil { // edge case: ensure group.leave() never called before group.wait()
-        group.wait()
-    }
+    group.wait()
 
     switch result {
     case .success(let item):
@@ -56,9 +54,7 @@ public func awaitAll<T, U: Error>(_ operations: [Async<T, U>], bailEarly: Bool =
             group.leave()
         }
     }
-    if results.value.count != operations.count { // edge case: ensure all group.leave() never called before group.wait()
-        group.wait()
-    }
+    group.wait()
 
     guard !isBailed else {
         switch results.value.last {

@@ -53,6 +53,21 @@ final class AwaitTests: XCTestCase {
         }
     }
 
+    func test_await_whenCalled_expectErrorThrownOnBackgroundThread() {
+        waitAsync { completion in
+            // sut
+            async({
+                _ = try await(self.asyncFunction(isError: true))
+                XCTFail("shouldn't be reached")
+                completion()
+            }, onError: { _ in
+                // test
+                XCTAssertFalse(Thread.isMainThread)
+                completion()
+            })
+        }
+    }
+
     func test_await_whenCalled_expectErrorThrownOnMainThread() {
         waitAsync { completion in
             // sut
@@ -64,7 +79,7 @@ final class AwaitTests: XCTestCase {
                 // test
                 XCTAssertTrue(Thread.isMainThread)
                 completion()
-            })
+            }, throwErrorOnMain: true)
         }
     }
 
