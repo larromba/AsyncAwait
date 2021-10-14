@@ -1,11 +1,11 @@
-# AsyncAwait [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://img.shields.io) [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
+# AsyncAwait [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://img.shields.io) [![Deprecated](https://img.shields.io/badge/Code-Deprecated-red.svg)](https://img.shields.io) [![Open Source Love png1](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 | master  | dev |
 | ------------- | ------------- |
 | [![Build Status](https://travis-ci.com/larromba/AsyncAwait.svg?branch=master)](https://travis-ci.com/larromba/AsyncAwait) | [![Build Status](https://travis-ci.com/larromba/AsyncAwait.svg?branch=dev)](https://travis-ci.com/larromba/AsyncAwait) |
 
 ## About
-This is a simple [async/await](https://javascript.info/async-await) implementation for Swift. This concept might become [part of Swift](https://gist.github.com/lattner/429b9070918248274f25b714dcfc7619) at some point.
+This is a simple [async/await](https://javascript.info/async-await) implementation for Swift. ~~This concept might become [part of Swift](https://gist.github.com/lattner/429b9070918248274f25b714dcfc7619) at some point.~~ `Async` & `Await` was Introduced in Swift 5.5, so this library is no longer necessary.
 
 Traditional callbacks are [hell](http://callbackhell.com/). Writing callbacks that pass control flow to a function is better, but obfuscates the control flow. Promises are a decent solution, but after writing my own Promise based on [this](https://github.com/khanlou/Promise/blob/master/Promise/Promise.swift), I felt its design to be somewhat fishy. Swift's type inference in Xcode also slows down in larger codebases, blocking flow and slowing compilation time. 
 
